@@ -1,0 +1,5 @@
+tile.simplyloaders.loader.name=Loader
+tile.simplyloaders.unloader.name=Unloader
+tile.simplyloaders.advancedunloader.name=Advanced unloader
+
+itemGroup.simplyloadersTab=Simply loaders

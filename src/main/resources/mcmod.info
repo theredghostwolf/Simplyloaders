@@ -1,0 +1,16 @@
+[
+{
+  "modid": "examplemod",
+  "name": "Example Mod",
+  "description": "A mod that adds ways to add and remove items from chestcarts",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["ghostwolf_"],
+  "credits": "Ghostwolf",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

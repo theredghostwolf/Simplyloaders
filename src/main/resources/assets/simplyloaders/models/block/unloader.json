@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "particle": "simplyloaders:blocks/unloaderflatside",
+    "down": "#bot",
+    "up": "#top",
+    "east": "#east",
+    "west": "#west",
+    "north": "#north",
+    "south": "#south"
+  }
+}

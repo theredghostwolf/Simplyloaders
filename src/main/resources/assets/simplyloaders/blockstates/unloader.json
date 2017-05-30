@@ -1,0 +1,95 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "simplyloaders:unloader",
+    "textures": {
+	"north": "simplyloaders:blocks/unloaderside",
+	"south": "simplyloaders:blocks/unloaderside",
+	"west": "simplyloaders:blocks/unloaderside",
+	"east": "simplyloaders:blocks/unloaderside",
+	"top": "simplyloaders:blocks/unloaderflatside",
+	"bot": "simplyloaders:blocks/unloaderflatside"
+
+     }
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}],
+    "outputside": {
+	"1": {
+	     "textures": {
+	     	"top": "simplyloaders:blocks/inputside"
+	     }
+	},
+	"2": {
+	     "textures": {
+	     	"bot": "simplyloaders:blocks/inputside"
+	     }
+	},
+	"3": {
+	     "textures": {
+	     	"east": "simplyloaders:blocks/inputside"
+	     }
+	},
+	"4": {
+	     "textures": {
+	     	"west": "simplyloaders:blocks/inputside"
+	     }
+	},
+	"5": {
+	     "textures": {
+	     	"south": "simplyloaders:blocks/inputside"
+	     }
+	},
+	"6": {
+	     "textures": {
+	     	"north": "simplyloaders:blocks/inputside"
+	     }
+	},
+	"0": {
+	
+	},
+	"7": {
+	
+	} 
+     },
+  "inputside": {
+	"1": {
+	     "textures": {
+	     	"top": "simplyloaders:blocks/outputside"
+	     }
+	},
+	"2": {
+	     "textures": {
+	     	"bot": "simplyloaders:blocks/outputside"
+	     }
+	},
+	"3": {
+	     "textures": {
+	     	"east": "simplyloaders:blocks/outputside"
+	     }
+	},
+	"4": {
+	     "textures": {
+	     	"west": "simplyloaders:blocks/outputside"
+	     }
+	},
+	"5": {
+	     "textures": {
+	     	"south": "simplyloaders:blocks/outputside"
+	     }
+	},
+	"6": {
+	     "textures": {
+	     	"north": "simplyloaders:blocks/outputside"
+	     }
+	},
+	"0": {
+
+	},
+	"7": {
+	
+	}
+     }
+  }
+}
