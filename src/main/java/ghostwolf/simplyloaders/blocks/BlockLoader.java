@@ -53,10 +53,8 @@ public class BlockLoader extends BlockLoaderBase implements ITileEntityProvider{
           if (te instanceof TileEntityLoaderBase) {
        	   if (player.isSneaking()) {
        		   ((TileEntityLoaderBase) te).setInputSide(side);
-       		    updateState(state, pos, world);
        	   } else {
        		   ((TileEntityLoaderBase) te).setOutputSide(side);
-       		    updateState(state, pos, world);
        	   }
           }
 	}

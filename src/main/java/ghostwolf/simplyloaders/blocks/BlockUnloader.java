@@ -45,11 +45,8 @@ public class BlockUnloader extends BlockLoaderBase implements ITileEntityProvide
         if (te instanceof TileEntityLoaderBase) {
      	   if (player.isSneaking()) {
      		   ((TileEntityLoaderBase) te).setOutputSide(side);
-     		   updateState(state, pos, world);
      	   } else {
-     		   ((TileEntityLoaderBase) te).setInputSide(side);
-     		   updateState(state, pos, world);
-     	      
+     		   ((TileEntityLoaderBase) te).setInputSide(side);     	      
      	   }
         }
 	}

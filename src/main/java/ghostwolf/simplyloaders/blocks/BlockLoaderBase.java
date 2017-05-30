@@ -50,12 +50,14 @@ public class BlockLoaderBase extends Block implements ITileEntityProvider {
 		setHardness(1.2F);
 		setResistance(10F);
 		setSoundType(blockSoundType.METAL);	
-		
+		 
 		if (type != null) {
 			Type = type;
 		} else {
 			Type = "";
 		}
+		
+		setDefaultState(blockState.getBaseState());
 	}
 
 	@Override
@@ -133,14 +135,23 @@ public class BlockLoaderBase extends Block implements ITileEntityProvider {
 	
 	@Override
     public IBlockState getStateFromMeta(int meta) {
-        return getDefaultState()
-                .withProperty(inputSide, meta & 6)
-                .withProperty(outputSide, meta & 6);
+        return getDefaultState();
     }
 
     @Override
     public int getMetaFromState(IBlockState state) {
-        return state.getValue(inputSide) + state.getValue(outputSide);
+        return 0;
+    }
+    
+    @Override
+    public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
+    	TileEntity te = worldIn.getTileEntity(pos);
+     	if (te instanceof TileEntityLoaderBase) {
+     		return state.withProperty(inputSide, ((TileEntityLoaderBase) te).inputSideToInt() ).withProperty(outputSide, ((TileEntityLoaderBase) te).outputSideToInt());
+ 
+     	} else {
+     		return state;
+     	}
     }
 
     @Override
@@ -166,8 +177,7 @@ public class BlockLoaderBase extends Block implements ITileEntityProvider {
     public void updateState (IBlockState state, BlockPos pos, World world) {
     		TileEntity te = world.getTileEntity(pos);
          	if (te instanceof TileEntityLoaderBase) {
-         		world.setBlockState(pos, state.withProperty(inputSide, ((TileEntityLoaderBase) te).inputSideToInt() ).withProperty(outputSide, ((TileEntityLoaderBase) te).outputSideToInt()));
-     
+         		world.setBlockState(pos, getActualState(state, world, pos) ) ;
          	}
     }
     
@@ -178,7 +188,7 @@ public class BlockLoaderBase extends Block implements ITileEntityProvider {
     			if (! worldIn.isRemote) {
     				// handle stuff serverside
     				onActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
-    			}	
+    			}
     			return true;
     	} else {
     		return false;
@@ -190,5 +200,4 @@ public class BlockLoaderBase extends Block implements ITileEntityProvider {
     	//override this to handle on clicked
     }
     
-
 }

@@ -21,6 +21,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -33,7 +34,6 @@ public class TileEntityLoaderBase extends TileEntity implements ICapabilityProvi
 	
 	@Override
 	public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newState) {
-	
 		return (oldState.getBlock() != newState.getBlock());
 	}
 	
@@ -176,6 +176,7 @@ public class TileEntityLoaderBase extends TileEntity implements ICapabilityProvi
 			inputSide = side;
 			updateNeighbors();
 			markDirty();
+			setBlockState();
 		}
 
 	}
@@ -188,6 +189,7 @@ public class TileEntityLoaderBase extends TileEntity implements ICapabilityProvi
 			outputSide = side;
 			updateNeighbors();
 			markDirty();
+			setBlockState();
 		}
 	}
 	
@@ -283,41 +285,19 @@ public class TileEntityLoaderBase extends TileEntity implements ICapabilityProvi
 	    
 	    @Override
 	    public void handleUpdateTag(NBTTagCompound tag) {
-	    	if (tag.getString("inputside") != "none") {
-	    		inputSide = EnumFacing.byName(tag.getString("inputside"));
-	    	} else {
-	    		inputSide = null;
-	    	}
-	    	if (tag.getString("outputside") != "none") { 
-	    		outputSide = EnumFacing.byName(tag.getString("outputside"));
-	    	} else {
-	    		outputSide = null;
-	    	}
+	    	readFromNBT(tag);
 	    	setBlockState();
 	    }
 	    
 	    @Override
 	    public NBTTagCompound getUpdateTag() {
-	    	NBTTagCompound compound = super.getUpdateTag();
-	        if (inputSide != null) {
-		    	   compound.setString("inputside", inputSide.toString());
-		       } else {
-		    		  compound.setString("inputside", "none"); 
-		    	   }
-		       
-		       if (outputSide != null) {
-		    	   compound.setString("outputside", outputSide.toString());
-		       } else {
-		    	   compound.setString("outputside", "none");
-		       }
-	    	return compound;
+	    	return writeToNBT(new NBTTagCompound());
 	    }
 	    
 	    @Override
 	    public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
 	    	super.onDataPacket(net, pkt);
 	    	handleUpdateTag(pkt.getNbtCompound());
-	    	System.out.println("got data packet");
 	    }
 	 
 	    @Override
@@ -325,6 +305,6 @@ public class TileEntityLoaderBase extends TileEntity implements ICapabilityProvi
 	         return new SPacketUpdateTileEntity(getPos(), 1, getUpdateTag());
 	    }
 	    
-	
-	     
+	    
+	      
 }
