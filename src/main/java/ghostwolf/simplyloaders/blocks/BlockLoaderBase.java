@@ -32,7 +32,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockLoaderBase extends Block implements ITileEntityProvider {
+public class BlockLoaderBase extends Block  {
 	
 	private String Type;
 	
@@ -61,7 +61,7 @@ public class BlockLoaderBase extends Block implements ITileEntityProvider {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World worldIn, int meta) {
+	public TileEntity createTileEntity(World world, IBlockState state) {
 		if (Type == "loader") {
 			return new TileEntityLoader();
 		} else if (Type == "unloader") {
@@ -69,6 +69,11 @@ public class BlockLoaderBase extends Block implements ITileEntityProvider {
 		} else {
 			return null;
 		}
+	}
+	
+	@Override
+	public boolean hasTileEntity(IBlockState state) {
+		return true;
 	}
 	
 	@Override

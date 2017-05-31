@@ -37,7 +37,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockLoader extends BlockLoaderBase implements ITileEntityProvider{
+public class BlockLoader extends BlockLoaderBase {
 
 	public static final PropertyInteger inputSide = PropertyInteger.create("inputside", 0, 6);
 	public static final PropertyInteger outputSide = PropertyInteger.create("outputside", 0, 6);

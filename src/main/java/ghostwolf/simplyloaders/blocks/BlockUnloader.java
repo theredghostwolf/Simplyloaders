@@ -31,7 +31,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockUnloader extends BlockLoaderBase implements ITileEntityProvider{
+public class BlockUnloader extends BlockLoaderBase {
 	
 	public BlockUnloader() {
 		super("unloader", "unloader");

@@ -45,13 +45,4 @@ public class TileEntityLoader extends TileEntityLoaderBase {
 		
 	}
 	
-    @Override
-    public void setBlockState () {
-    	IBlockState state = getWorld().getBlockState(getPos());
-    	if (state.getBlock() == ModBlocks.loader) {
-    		ModBlocks.loader.updateState(state, getPos(), getWorld());
-    	}
-    }
-    
-
 }

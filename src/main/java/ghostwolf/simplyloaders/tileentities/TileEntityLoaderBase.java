@@ -279,8 +279,9 @@ public class TileEntityLoaderBase extends TileEntity implements ICapabilityProvi
 	    	return 0;
 	    }
 	    
-	    public void setBlockState() {
-	    	//override this to set the state.
+	    public void setBlockState() {    	
+	    	IBlockState state = getWorld().getBlockState(getPos());
+	    	getWorld().notifyBlockUpdate(getPos(), state, state, 3);
 	    }
 	    
 	    @Override
